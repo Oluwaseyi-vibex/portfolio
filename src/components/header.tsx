@@ -30,6 +30,7 @@ const Header = () => {
   const text = useRef<HTMLParagraphElement | null>(null);
   // const text2 = useRef<HTMLParagraphElement | null>(null);
   const buttonsRef = useRef<HTMLLIElement[]>([]);
+  const buttonsRef2 = useRef<HTMLLIElement[]>([]);
 
   const hangerAnime = () => {
     gsap.fromTo(
@@ -188,7 +189,7 @@ const Header = () => {
 
   return (
     <>
-      <div ref={container} className="flex justify-between">
+      <div ref={container} id="section1" className="flex justify-between">
         <div
           ref={hanger}
           className=" hidden md:flex gap-[8px] fixed z-50 px-3 top-0 w-fit items-center flex-col  "
@@ -234,6 +235,7 @@ const Header = () => {
                 <span className="text-[#C778DD] text-[16px]">#</span>{" "}
                 <p className="text-white text-[16px]">home</p>
               </li>
+
               <li
                 ref={(el) => (buttonsRef.current[1] = el!)}
                 className="flex cursor-pointer"
@@ -241,6 +243,7 @@ const Header = () => {
                 <span className="text-[#C778DD] text-[16px]">#</span>{" "}
                 <p className="text-white text-[16px]">work</p>
               </li>
+
               <li
                 ref={(el) => (buttonsRef.current[2] = el!)}
                 className="flex cursor-pointer"
@@ -263,35 +266,38 @@ const Header = () => {
           </nav>
           {isToggle && (
             <ul className="md:hidden z-40 py-8 px-4 top-[72px] h-full flex flex-col gap-[32px] fixed w-full bg-[#282C33]">
-              <li
-                ref={(el) => (buttonsRef.current[0] = el!)}
-                id="section1"
-                className="flex w-fit cursor-pointer"
-              >
-                <span className="text-[#C778DD] text-[32px]">#</span>{" "}
-                <p className="text-white text-[32px]">home</p>
-              </li>
-              <li
-                ref={(el) => (buttonsRef.current[1] = el!)}
-                className="flex w-fit cursor-pointer"
-              >
-                <span className="text-[#C778DD] text-[32px]">#</span>{" "}
-                <p className="text-white text-[32px]">work</p>
-              </li>
-              <li
-                ref={(el) => (buttonsRef.current[2] = el!)}
-                className="flex w-fit cursor-pointer"
-              >
-                <span className="text-[#C778DD] text-[32px]">#</span>
-                <p className="text-white text-[32px]">about-me</p>
-              </li>
-              <li
-                ref={(el) => (buttonsRef.current[3] = el!)}
-                className="flex w-fit cursor-pointer"
-              >
-                <span className="text-[#C778DD] text-[32px]">#</span>
-                <p className="text-white text-[32px]">contact</p>
-              </li>
+              <a href="#section1">
+                <li
+                  onClick={toggleMenu}
+                  id="section1"
+                  className="flex w-fit cursor-pointer"
+                >
+                  <span className="text-[#C778DD] text-[32px]">#</span>{" "}
+                  <p className="text-white text-[32px]">home</p>
+                </li>
+              </a>
+
+              <a href="#section2">
+                <li onClick={toggleMenu} className="flex w-fit cursor-pointer">
+                  <span className="text-[#C778DD] text-[32px]">#</span>{" "}
+                  <p className="text-white text-[32px]">work</p>
+                </li>
+              </a>
+
+              <a href="#section3">
+                <li onClick={toggleMenu} className="flex w-fit cursor-pointer">
+                  <span className="text-[#C778DD] text-[32px]">#</span>
+                  <p className="text-white text-[32px]">about-me</p>
+                </li>
+              </a>
+
+              <a href="#section4">
+                <li onClick={toggleMenu} className="flex w-fit cursor-pointer">
+                  <span className="text-[#C778DD] text-[32px]">#</span>
+                  <p className="text-white text-[32px]">contact</p>
+                </li>
+              </a>
+
               <li className="flex  gap-[4px] w-fit">
                 <span className="text-white text-[32px]">EN</span>
                 <img src={DownArrow} alt="DownArrow" className="w-3" />
