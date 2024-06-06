@@ -30,7 +30,6 @@ const Header = () => {
   const text = useRef<HTMLParagraphElement | null>(null);
   // const text2 = useRef<HTMLParagraphElement | null>(null);
   const buttonsRef = useRef<HTMLLIElement[]>([]);
-  const buttonsRef2 = useRef<HTMLLIElement[]>([]);
 
   const hangerAnime = () => {
     gsap.fromTo(
