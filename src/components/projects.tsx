@@ -75,10 +75,10 @@ const Projects = () => {
       text: {
         value: "Projects",
         newClass: "class2",
-        scrollTrigger: {
-          trigger: projectText.current,
-          // toggleActions: "restart pause resume",
-        },
+      },
+      scrollTrigger: {
+        trigger: projectText.current,
+        // toggleActions: "restart pause resume",
       },
     });
   };
