@@ -346,11 +346,9 @@ const Header = () => {
                 target="_blank"
                 rel="noreferrer"
                 href="https://wa.me/message/EOGGOVOH5LACP1"
-                className="w-full"
+                className="px-[16px] py-[8px] border-solid border-[1px] border-[#C778DD] text-white hover:bg-[#C778DD]/20  "
               >
-                <button className="px-[16px] py-[8px] border-solid border-[1px] border-[#C778DD] text-white hover:bg-[#C778DD]/20 hover:hidden  ">
-                  Contact me!!
-                </button>
+                <button>Contact me!!</button>
               </a>
             </div>
 

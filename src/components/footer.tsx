@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
           <div className="flex md:flex-row flex-col gap-1 md:gap-6">
             <div className="flex gap-[8px]">
               <img src={Logo} alt="Logo" />
-              <h1 className="relative z-40 text-white text-[16px] font-bold leading-normal tracking-wide">
+              <h1 className="relative z-30 text-white text-[16px] font-bold leading-normal tracking-wide">
                 OluwaSeyi
               </h1>
             </div>
