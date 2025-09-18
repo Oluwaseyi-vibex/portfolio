@@ -259,7 +259,7 @@ const Header = () => {
               </li>
               <li className="flex gap-[4px]">
                 <span className="text-white text-[16px]">EN</span>
-                <img src={DownArrow} alt="DownArrow" />
+                <img src={DownArrow} alt="DownArrow" className="w-3" />
               </li>
             </ul>
           </nav>
@@ -335,7 +335,7 @@ const Header = () => {
               >
                 {`<h1>Meet Seyi</h1>`} <br />
                 <span className="text-[#C778DD]">
-                  Senior Front-End <br className="md:hidden flex" /> Developer
+                  Front-End <br className="md:hidden flex" /> Developer
                 </span>{" "}
               </h1>
               <p
@@ -360,10 +360,10 @@ const Header = () => {
               />
               <div className="flex items-center gap-2 relative md:left-[20px] md:w-[402px] p-[8px] border-solid border-[1px] border-white ">
                 <div className="w-[16px] h-[16px] bg-[#C778DD] "></div>
-                <p className="text-[#ABB2BF] ">
+                {/* <p className="text-[#ABB2BF] ">
                   Currently working on{" "}
                   <span className="text-white">Portfolio</span>
-                </p>
+                </p> */}
               </div>
               <img
                 ref={class_two}

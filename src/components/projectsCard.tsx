@@ -24,7 +24,7 @@ const ProjectsCard: React.FC<ProjectsCardProps> = (props) => {
         {props.projectTools}
       </p>
       <div className="p-3">
-        <h1 className="text-[24px] font-medium text-white">
+        <h1 className="text-[24px] uppercase font-medium text-white">
           {props.projectTitle}
         </h1>
         <p className="text-[#ABB2BF] text-[16px] mt-4">

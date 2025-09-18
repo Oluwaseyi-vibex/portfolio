@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import MyPicture from "../assets/myPic.jpg";
+import MyPicture from "../assets/myPic3.jpeg";
 import AboutSideDot from "../assets/AboutSideDot.png";
 import AboutComponents from "./AboutComponents";
 import { gsap } from "gsap";

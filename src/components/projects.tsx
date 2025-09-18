@@ -1,7 +1,7 @@
 import ProjectsCard from "./projectsCard";
-import ProjectImg from "../assets/arthub.png";
+import alagonImg from "../assets/alagon.png";
 import uatJournalImg from "../assets/uat.png";
-import portfolioImg from "../assets/ACLASIECVOTE.png";
+import hoggImg from "../assets/hogg.png";
 import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -112,7 +112,7 @@ const Projects = () => {
           <ProjectsCard
             img={uatJournalImg}
             projectTools="NEXT.JS TYPESCRIPT TAILWIND"
-            projectTitle="UAT Journal"
+            projectTitle="DOIT"
             projectDescrip="UAT journal for lecturers"
             live="Live <~>"
             link="https://github.com/Oluwaseyi-vibex/UAT-JOURNAL-WEBSITE"
@@ -121,20 +121,20 @@ const Projects = () => {
 
         <div ref={box2}>
           <ProjectsCard
-            img={portfolioImg}
-            projectTools="REACT JSX PYTHON FLASK"
-            projectTitle="ACLASIECVOTE"
-            projectDescrip="ACLASIECVOTE website"
+            img={hoggImg}
+            projectTools="NEXT.JS JSX TAILWIND"
+            projectTitle="Hogg Anderson"
+            projectDescrip="Hogg Anderson website"
             live="Live <~>"
-            link="https://aclasbyeelection.vercel.app/"
+            link="https://www.hogganderson.com.ng/"
           />
         </div>
         <div ref={box3}>
           <ProjectsCard
-            img={ProjectImg}
-            projectTools="REACT TSX TAILWIND"
-            projectTitle="ARTHUB"
-            projectDescrip="Website for selling art works"
+            img={alagonImg}
+            projectTools="NEXTjs JSX TAILWIND"
+            projectTitle="Alagon Energy"
+            projectDescrip="Alagon Energy landing page"
             live="Live <~>"
             link="https://arthubsite.vercel.app/"
           />
