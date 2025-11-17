@@ -127,20 +127,26 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    const handleClick = (index: number) => {
-      const section = document.querySelector(`#section${index + 1}`);
-      if (section) {
-        gsap.to(window, { duration: 1, scrollTo: { y: section, offsetY: 70 } });
-      }
-    };
+    const buttons = buttonsRef.current; // copy ref value once
 
-    buttonsRef.current.forEach((button, index) => {
-      button.addEventListener("click", () => handleClick(index));
+    const handlers = buttons.map((button, index) => {
+      const handler = () => {
+        const section = document.querySelector(`#section${index + 1}`);
+        if (section) {
+          gsap.to(window, {
+            duration: 1,
+            scrollTo: { y: section, offsetY: 70 },
+          });
+        }
+      };
+
+      button.addEventListener("click", handler);
+      return handler; // store handler for cleanup
     });
 
     return () => {
-      buttonsRef.current.forEach((button, index) => {
-        button.removeEventListener("click", () => handleClick(index));
+      buttons.forEach((button, index) => {
+        button.removeEventListener("click", handlers[index]);
       });
     };
   }, []);
@@ -335,7 +341,7 @@ const Header = () => {
               >
                 {`<h1>Meet Seyi</h1>`} <br />
                 <span className="text-[#C778DD]">
-                  Front-End <br className="md:hidden flex" /> Developer
+                  Full-Stack <br className="md:hidden flex" /> Developer
                 </span>{" "}
               </h1>
               <p

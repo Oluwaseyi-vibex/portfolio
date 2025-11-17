@@ -1,7 +1,9 @@
 import ProjectsCard from "./projectsCard";
 import alagonImg from "../assets/alagon.png";
-import uatJournalImg from "../assets/uat.png";
+import Bejite from "../assets/bejite.png";
+import DOIT from "../assets/doit.png";
 import hoggImg from "../assets/hogg.png";
+import Uatvote from "../assets/uatvote.png";
 import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -107,15 +109,37 @@ const Projects = () => {
         </p>
       </div>
 
-      <div className="flex md:flex-row flex-col w-full items-center justify-center gap-[16px]">
+      <div className="grid md:grid-cols-3 grid-cols-1 place-items-center place-content-center w-full md:px-[100px] gap-[16px]">
         <div ref={box1}>
           <ProjectsCard
-            img={uatJournalImg}
+            img={Bejite}
+            projectTools="REACT JAVASCRIPT AXIOS"
+            projectTitle="BEJITE"
+            projectDescrip="World's Smartest Job Site"
+            live="Live <~>"
+            link="https://bejitetest.vercel.app/"
+          />
+        </div>
+
+        <div ref={box1}>
+          <ProjectsCard
+            img={DOIT}
             projectTools="NEXT.JS TYPESCRIPT TAILWIND"
             projectTitle="DOIT"
-            projectDescrip="UAT journal for lecturers"
+            projectDescrip="Task Management App"
             live="Live <~>"
-            link="https://github.com/Oluwaseyi-vibex/UAT-JOURNAL-WEBSITE"
+            link="https://do-it-management.vercel.app/"
+          />
+        </div>
+
+        <div ref={box2}>
+          <ProjectsCard
+            img={Uatvote}
+            projectTools="NEXT.JS JSX NODEjs PostgreSQL"
+            projectTitle="UAT Vote"
+            projectDescrip="Digital Voting System"
+            live="Live <~>"
+            link="https://uatvote.vercel.app/"
           />
         </div>
 
@@ -129,6 +153,7 @@ const Projects = () => {
             link="https://www.hogganderson.com.ng/"
           />
         </div>
+
         <div ref={box3}>
           <ProjectsCard
             img={alagonImg}

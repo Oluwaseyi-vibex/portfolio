@@ -70,16 +70,21 @@ const About: React.FC = () => {
         <div ref={Container1} className="flex justify-between">
           <div className="md:w-[500px] text-[#ABB2BF] flex flex-col gap-8">
             <p>
-              Welcome to my corner of the web! I'm
+              Welcome to my corner of the web! I'm{" "}
               <span className="font-bold text-white">
                 {" "}
                 Kodeleyiri Oluwaseyifunmi Ezekiel
               </span>
-              , a passionate frontend developer specializing in crafting
-              immersive and user-friendly web experiences. With a focus on
-              technologies like React, Next.js, Tailwind CSS, and JavaScript, I
-              bring ideas to life by blending creativity with cutting-edge
-              development techniques.
+              , a passionate full-stack developer dedicated to building
+              seamless, scalable, and intuitive digital experiences. I work
+              across both frontend and backend systems, bringing ideas to life
+              with clean architecture, modern frameworks, and well-crafted user
+              interfaces. <br /> I specialize in technologies like React,
+              Next.js, Tailwind CSS, JavaScript, Node.js, and Express, allowing
+              me to create fast, responsive applications from concept to
+              deployment. Whether it's designing smooth user flows or
+              engineering robust backend logic, I love turning complex problems
+              into elegant solutions.
             </p>
             <div className="collapse rounded-none">
               <input type="checkbox" className="peer" />
@@ -90,7 +95,7 @@ const About: React.FC = () => {
                 <div className="flex flex-col gap-8 mt-8">
                   <AboutComponents
                     Title="What Do I Do?"
-                    Paragraph="As a frontend developer, I specialize in building interactive
+                    Paragraph="As a fullstack developer, I specialize in building interactive
                     and responsive websites that not only captivate users but also
                     provide them with seamless navigation and intuitive
                     interfaces. My expertise lies in harnessing the power of React

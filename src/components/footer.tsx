@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
             </div>
             <p className="text-[#ABB2BF] text-[18px]">oluseyiwmwm@gmail.com</p>
           </div>
-          <p className="text-white text-[18px]">Front-End Developer</p>
+          <p className="text-white text-[18px]">Full-Stack Developer</p>
         </div>
 
         <div className="gap-4 flex flex-col">
