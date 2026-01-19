@@ -1,6 +1,5 @@
 import ProjectsCard from "./projectsCard";
 import alagonImg from "../assets/alagon.png";
-import Bejite from "../assets/bejite.png";
 import DOIT from "../assets/doit.png";
 import hoggImg from "../assets/hogg.png";
 import Uatvote from "../assets/uatvote.png";
@@ -30,7 +29,7 @@ const Projects = () => {
           trigger: box1.current,
           // toggleActions: "restart pause resume",
         },
-      }
+      },
     );
   };
 
@@ -48,7 +47,7 @@ const Projects = () => {
           trigger: box2.current,
           // toggleActions: "restart pause resume",
         },
-      }
+      },
     );
   };
 
@@ -66,7 +65,7 @@ const Projects = () => {
           trigger: box3.current,
           // toggleActions: "restart pause resume",
         },
-      }
+      },
     );
   };
 
@@ -112,17 +111,6 @@ const Projects = () => {
       <div className="grid md:grid-cols-3 grid-cols-1 place-items-center place-content-center w-full md:px-[100px] gap-[16px]">
         <div ref={box1}>
           <ProjectsCard
-            img={Bejite}
-            projectTools="REACT JAVASCRIPT AXIOS"
-            projectTitle="BEJITE"
-            projectDescrip="World's Smartest Job Site"
-            live="Live <~>"
-            link="https://bejitetest.vercel.app/"
-          />
-        </div>
-
-        <div ref={box1}>
-          <ProjectsCard
             img={DOIT}
             projectTools="NEXT.JS TYPESCRIPT TAILWIND"
             projectTitle="DOIT"
@@ -161,7 +149,7 @@ const Projects = () => {
             projectTitle="Alagon Energy"
             projectDescrip="Alagon Energy landing page"
             live="Live <~>"
-            link="https://arthubsite.vercel.app/"
+            link="https://www.alagonenergy.com/"
           />
         </div>
       </div>
