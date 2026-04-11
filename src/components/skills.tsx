@@ -235,28 +235,34 @@ const Skills: React.FC = () => {
           <div ref={box1}>
             <SkillsComponent
               Title="Languages"
-              Descrip="TypeScript JavaScript"
+              Descrip="TypeScript JavaScript HTML CSS"
             />
           </div>
           <div className="flex flex-row md:flex-col gap-2 md:gap-4">
             <div ref={box4}>
-              <SkillsComponent Title="Databases" Descrip="NaN" />
+              <SkillsComponent
+                Title="Databases"
+                Descrip="PostgreSQL MongoDB Firebase"
+              />
             </div>
             <div ref={box2}>
-              <SkillsComponent Title="Other" Descrip="HTML CSS SCSS" />
+              <SkillsComponent
+                Title="Other"
+                Descrip="Responsive Design REST APIs UI Animation"
+              />
             </div>
           </div>
           <div className="flex flex-col gap-4">
             <div ref={box5}>
               <SkillsComponent
                 Title="Tools"
-                Descrip="VSCode Figma GSAP Git DaisyUI Bootstrap react-hooks-form React-Redux "
+                Descrip="Git GitHub VS Code Figma GSAP DaisyUI Bootstrap Framer-motion"
               />
             </div>
             <div ref={box3}>
               <SkillsComponent
                 Title="Frameworks"
-                Descrip="React Tailwind Next.js"
+                Descrip="React Next.js Tailwind Node.js Express"
               />
             </div>
           </div>
