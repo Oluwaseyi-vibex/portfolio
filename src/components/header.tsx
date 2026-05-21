@@ -5,7 +5,7 @@ import Logo from "../assets/Logo.svg";
 import DownArrow from "../assets/Group 58.svg";
 // import HeroImg from "../assets/HeroImage.png";
 // Hero pixel art: Programmer NPC by Clint Bellanger (CC-BY 3.0) — opengameart.org/content/programmer-npc
-import HeroPixel from "../assets/hero-pixel.png";
+// import HeroPixel from "../assets/hero-pixel.png";
 import Dots from "../assets/Dots.svg";
 import HeroStyle from "../assets/HeroStyle1.svg";
 import Qoute from "../assets/quote.svg";
@@ -56,26 +56,26 @@ const Header = () => {
     );
   };
 
-  const hero_textAnime = () => {
-    gsap.fromTo(
-      heroTexts.current.filter(Boolean),
-      {
-        opacity: 0,
-        y: -60,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.7,
-        ease: "power3.out",
-        stagger: 0.4,
-        scrollTrigger: {
-          trigger: container.current,
-          toggleActions: "restart pause resume",
-        },
-      }
-    );
-  };
+  // const hero_textAnime = () => {
+  //   gsap.fromTo(
+  //     heroTexts.current.filter(Boolean),
+  //     {
+  //       opacity: 0,
+  //       y: -60,
+  //     },
+  //     {
+  //       y: 0,
+  //       opacity: 1,
+  //       duration: 1.7,
+  //       ease: "power3.out",
+  //       stagger: 0.4,
+  //       scrollTrigger: {
+  //         trigger: container.current,
+  //         toggleActions: "restart pause resume",
+  //       },
+  //     }
+  //   );
+  // };
 
   const rotate = () => {
     gsap.fromTo(
