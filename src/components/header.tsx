@@ -3,7 +3,9 @@ import Github from "../assets/Github.svg";
 import Mail from "../assets/Email.svg";
 import Logo from "../assets/Logo.svg";
 import DownArrow from "../assets/Group 58.svg";
-import HeroImg from "../assets/HeroImage.png";
+// import HeroImg from "../assets/HeroImage.png";
+// Hero pixel art: Programmer NPC by Clint Bellanger (CC-BY 3.0) — opengameart.org/content/programmer-npc
+import HeroPixel from "../assets/hero-pixel.png";
 import Dots from "../assets/Dots.svg";
 import HeroStyle from "../assets/HeroStyle1.svg";
 import Qoute from "../assets/quote.svg";
@@ -12,6 +14,7 @@ import Menu from "../assets/menu.png";
 import { ScrollTrigger } from "gsap/all";
 import Draggable from "gsap/Draggable";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -22,14 +25,16 @@ gsap.registerPlugin(TextPlugin);
 
 const Header = () => {
   const hanger = useRef<HTMLDivElement | null>(null);
-  const hero_text = useRef<HTMLHeadingElement | null>(null);
+  const heroTexts = useRef<(HTMLDivElement | null)[]>([]);
   const container = useRef<HTMLDivElement | null>(null);
   const class_two = useRef<HTMLImageElement | null>(null);
   const DotBox = useRef<HTMLImageElement | null>(null);
   const DotBoxBarrier = useRef<HTMLDivElement | null>(null);
+  const sliderBar = useRef<HTMLDivElement | null>(null);
+  const sliderTrack = useRef<HTMLDivElement | null>(null);
   const text = useRef<HTMLParagraphElement | null>(null);
   // const text2 = useRef<HTMLParagraphElement | null>(null);
-  const buttonsRef = useRef<HTMLLIElement[]>([]);
+  const buttonsRef = useRef<(HTMLLIElement | null)[]>([]);
 
   const hangerAnime = () => {
     gsap.fromTo(
@@ -53,16 +58,17 @@ const Header = () => {
 
   const hero_textAnime = () => {
     gsap.fromTo(
-      hero_text.current,
+      heroTexts.current.filter(Boolean),
       {
         opacity: 0,
-        x: -200,
+        y: -60,
       },
       {
-        x: 0,
-        duration: 1,
+        y: 0,
         opacity: 1,
-        ease: "",
+        duration: 1.7,
+        ease: "power3.out",
+        stagger: 0.4,
         scrollTrigger: {
           trigger: container.current,
           toggleActions: "restart pause resume",
@@ -71,13 +77,13 @@ const Header = () => {
     );
   };
 
-  const move = () => {
+  const rotate = () => {
     gsap.fromTo(
       class_two.current,
-      { opacity: 1, x: 0 },
+      { opacity: 1, x: -180 },
       {
         opacity: 1,
-        x: 350,
+        x: 750,
         duration: 4,
         rotation: -360,
         ease: "bounce.out",
@@ -100,7 +106,7 @@ const Header = () => {
       duration: 4,
       text: {
         value:
-          "I wield a versatile arsenal of technologies to breathe life into designs and elevate user interactions.",
+          "I ship solutions.",
         newClass: "class2",
       },
     });
@@ -119,17 +125,38 @@ const Header = () => {
 
   useEffect(() => {
     hangerAnime();
-    hero_textAnime();
+    // hero_textAnime() removed — the intro timeline drives these elements now
     HeroPScrambled();
-    move();
+    rotate();
     drag();
     smoothScroll();
+
+    // Slide the purple square from left to right, looping forever
+    if (sliderBar.current && sliderTrack.current) {
+      const trackWidth = sliderTrack.current.offsetWidth;
+      const barWidth = sliderBar.current.offsetWidth;
+      gsap.fromTo(
+        sliderBar.current,
+        { x: 0 },
+        {
+          x: trackWidth - barWidth - 16, // 16 = 8px padding on each side
+          duration: 2.5,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true,
+        }
+      );
+    }
   }, []);
 
   useEffect(() => {
-    const buttons = buttonsRef.current; // copy ref value once
+    const cleanups: Array<() => void> = [];
 
-    const handlers = buttons.map((button, index) => {
+    buttonsRef.current.forEach((button, index) => {
+      if (!button) {
+        return;
+      }
+
       const handler = () => {
         const section = document.querySelector(`#section${index + 1}`);
         if (section) {
@@ -141,13 +168,11 @@ const Header = () => {
       };
 
       button.addEventListener("click", handler);
-      return handler; // store handler for cleanup
+      cleanups.push(() => button.removeEventListener("click", handler));
     });
 
     return () => {
-      buttons.forEach((button, index) => {
-        button.removeEventListener("click", handlers[index]);
-      });
+      cleanups.forEach((cleanup) => cleanup());
     };
   }, []);
 
@@ -195,9 +220,10 @@ const Header = () => {
   return (
     <>
       <div ref={container} id="section1" className="flex justify-between">
+        {/* Github, Twitter, Mail Hanger */}
         <div
           ref={hanger}
-          className=" hidden md:flex gap-[8px] fixed z-50 px-3 top-0 w-fit items-center flex-col  "
+          className=" flex gap-[8px] fixed md:z-50 px-3 top-0 w-fit items-center flex-col  "
         >
           <div className="h-[191px] relative z-50 w-[1px] bg-[#ABB2BF] "></div>
           <div className="flex flex-col items-center gap-[8px]">
@@ -208,21 +234,26 @@ const Header = () => {
             >
               <img src={Github} alt="Github" />
             </a>
-            <img src={Twitter} alt="Twitter" className="w-[23px] " />
+
+            <a href="https://x.com/theyanax" target="_blank" rel="noopener noreferrer">
+              <img src={Twitter} alt="Twitter" className="w-[23px] " />
+            </a>
+
             <a href="mailto:oluseyiwmwm@gmail.com">
               <img src={Mail} alt="mail" />
             </a>
           </div>
         </div>
 
-        <div className="flex  flex-col md:items-center w-full justify-around ">
+        <div className="flex  flex-col md:items-center w-full  ">
+          {/* Navigation */}
           <nav className="flex fixed top-0 px-4 bg-[#282C33] z-40 w-full md:h-fit py-6 md:px-0 md:py-[32px] md:gap-[150px] justify-between md:justify-around ">
-            <div className="flex gap-[8px]">
+            <Link to="/" className="flex gap-[8px]">
               <img src={Logo} alt="Logo" />
               <h1 className="relative z-40 text-white text-[16px] font-bold leading-normal tracking-wide">
                 OluwaSeyi
               </h1>
-            </div>
+            </Link>
 
             <img
               onClick={toggleMenu}
@@ -233,7 +264,9 @@ const Header = () => {
 
             <ul className="md:flex  hidden gap-[32px] align-start">
               <li
-                ref={(el) => (buttonsRef.current[0] = el!)}
+                ref={(el) => {
+                  buttonsRef.current[0] = el;
+                }}
                 id="section1"
                 className="flex cursor-pointer"
               >
@@ -242,7 +275,9 @@ const Header = () => {
               </li>
 
               <li
-                ref={(el) => (buttonsRef.current[1] = el!)}
+                ref={(el) => {
+                  buttonsRef.current[1] = el;
+                }}
                 className="flex cursor-pointer"
               >
                 <span className="text-[#C778DD] text-[16px]">#</span>{" "}
@@ -250,18 +285,28 @@ const Header = () => {
               </li>
 
               <li
-                ref={(el) => (buttonsRef.current[2] = el!)}
+                ref={(el) => {
+                  buttonsRef.current[2] = el;
+                }}
                 className="flex cursor-pointer"
               >
                 <span className="text-[#C778DD] text-[16px]">#</span>
                 <p className="text-white text-[16px]">about-me</p>
               </li>
               <li
-                ref={(el) => (buttonsRef.current[3] = el!)}
+                ref={(el) => {
+                  buttonsRef.current[3] = el;
+                }}
                 className="flex cursor-pointer"
               >
                 <span className="text-[#C778DD] text-[16px]">#</span>
                 <p className="text-white text-[16px]">contact</p>
+              </li>
+              <li>
+                <Link to="/terminal" className="flex cursor-pointer">
+                  <span className="text-[#C778DD] text-[16px]">#</span>
+                  <p className="text-white text-[16px]">shell</p>
+                </Link>
               </li>
               <li className="flex gap-[4px]">
                 <span className="text-white text-[16px]">EN</span>
@@ -269,6 +314,7 @@ const Header = () => {
               </li>
             </ul>
           </nav>
+          {/* Mobile Navigation */}
           {isToggle && (
             <ul className="md:hidden z-40 py-8 px-4 top-[72px] h-full flex flex-col gap-[32px] fixed w-full bg-[#282C33]">
               <a href="#section1">
@@ -303,6 +349,13 @@ const Header = () => {
                 </li>
               </a>
 
+              <Link to="/terminal" onClick={toggleMenu}>
+                <li className="flex w-fit cursor-pointer">
+                  <span className="text-[#C778DD] text-[32px]">#</span>
+                  <p className="text-white text-[32px]">shell</p>
+                </li>
+              </Link>
+
               <li className="flex  gap-[4px] w-fit">
                 <span className="text-white text-[32px]">EN</span>
                 <img src={DownArrow} alt="DownArrow" className="w-3" />
@@ -333,58 +386,66 @@ const Header = () => {
             </ul>
           )}
 
-          <div className="flex relative px-4 top-[60px] md:top-[90px] md:flex-row flex-col items-start w-full h-fit py-8 md:py-[32px]  md:px-0 gap-8 md:gap-10 justify-center">
-            <div className="relative z-10  md:top-[117px] ">
-              <h1
-                ref={hero_text}
-                className="text-white text-[30px] md:text-[32px] font-semibold leading-normal"
-              >
-                {`<h1>Meet Seyi</h1>`} <br />
-                <span className="text-[#C778DD]">
-                  Full-Stack <br className="md:hidden flex" /> Developer
-                </span>{" "}
-              </h1>
-              <p
-                ref={text}
-                className="text-[#ABB2BF] text-[16px] font-normal md:w-[500px] leading-[25px] py-[30px] "
-              ></p>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://wa.me/message/EOGGOVOH5LACP1"
-                className="px-[16px] py-[8px] border-solid border-[1px] border-[#C778DD] text-white hover:bg-[#C778DD]/20  "
-              >
-                <button>Contact me!!</button>
-              </a>
+          <section ref={DotBoxBarrier} className="h-[100vh] md:h-screen flex flex-col relative ">
+            <div className="relative z-10 w-full mx-auto mt-[70%] md:mt-[50%] flex flex-col items-center justify-center">
+              <div className="flex flex-col gap-2 md items-center justify-center w-full">
+                <div
+                  ref={(el) => { heroTexts.current[0] = el; }}
+                  className="hero-heading-line text-white text-[20px] md:text-[32px] text-center font-semibold leading-normal"
+                >
+                  {"<h1>Meet Seyi</h1>"} <br />
+                </div>
+                <div
+                  ref={(el) => { heroTexts.current[1] = el; }}
+                  className="hero-heading-line text-[#C778DD] relative z-20 text-[20px] md:text-[32px] text-center font-semibold leading-normal"
+                >
+                  {"<h2>"}Full-Stack Engineer{"</h2>"}
+                </div>
+              </div>
+
+              <div className="hero-cta flex flex-col items-center justify-center gap-4 md:gap-4 md:flex-row mt-10 md:mt-8">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://wa.me/message/EOGGOVOH5LACP1"
+                  className="px-[16px] py-[8px] border-solid border-[1px] border-[#C778DD] text-white hover:bg-[#C778DD]/20"
+                >
+                  <button>Contact me!!</button>
+                </a>
+              </div>
+
+
+
+              <div className="flex flex-row items-center justify-center w-full relative mt-4">
+                <img
+                  ref={class_two}
+                  className="w-[30%] relative bottom-[180px] md:bottom-[220px] right-2 md:right-[15px] z-0 mx-auto"
+                  src={HeroStyle}
+                  alt="ZigZagImg"
+                />
+                <img
+                  ref={DotBox}
+                  className="w-[20%] relative bottom-[210px] md:bottom-[40px] left-[75px] md:left-[250px] z-0 mx-auto"
+                  src={Dots}
+                  alt="Dots Box"
+                />
+              </div>
             </div>
 
-            <div ref={DotBoxBarrier} className="md:h-[500px]">
-              <img
-                className="relative w-[90%] md:w-[100%]  z-10 "
-                src={HeroImg}
-                alt="HeroImg"
-              />
-              <div className="flex items-center gap-2 relative md:left-[20px] md:w-[402px] p-[8px] border-solid border-[1px] border-white ">
-                <div className="w-[16px] h-[16px] bg-[#C778DD] "></div>
-                {/* <p className="text-[#ABB2BF] ">
-                  Currently working on{" "}
-                  <span className="text-white">Portfolio</span>
-                </p> */}
-              </div>
-              <img
-                ref={class_two}
-                className="relative w-[30%] bottom-[260px] md:bottom-[300px] right-2 md:right-[15px] z-0"
-                src={HeroStyle}
-                alt="ZigZagImg"
-              />
-              <img
-                ref={DotBox}
-                className="relative md:bottom-[300px] md:left-[350px] bottom-[250px] left-[230px] w-[20%] z-20"
-                src={Dots}
-                alt="Dots Box"
+
+
+
+            {/* Sliding indicator bar — pinned to the bottom of the hero section */}
+            <div
+              ref={sliderTrack}
+              className="w-[90%] md:w-[402px] mx-auto p-[8px] border-solid border-[1px] border-white overflow-hidden relative"
+            >
+              <div
+                ref={sliderBar}
+                className="w-[16px] h-[16px] bg-[#C778DD]"
               />
             </div>
-          </div>
+          </section>
 
           <div className="flex px-4 justify-center w-full  ovrflow-hidden items-center ">
             <div className="flex flex-col md:pt-5 items-end">

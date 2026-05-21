@@ -9,10 +9,39 @@ import hoggImg from "../assets/hogg.png";
 import Uatvote from "../assets/uatvote.png";
 import ProjectsCard from "./projectsCard";
 import ELI5 from "../assets/ELI5.png"
+import LeadGen from "../assets/leadgen.png"
 import Mecha from "../assets/mecha.png"
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const projects = [
+
+  {
+    img: Mecha,
+    projectTools: "Nodejs Prisma PostgreSQL",
+    projectTitle: "Power as you go",
+    projectDescrip: "Power as you go is an IoT-enabled electricity credit management backend for smart prepaid meters.",
+    live: "Live <~>",
+    link: "https://github.com/Oluwaseyi-vibex/mechanics-backend",
+    caseStudyId: "power-as-you-go",
+  },
+  {
+    img: LeadGen,
+    projectTools: "LUA-AI NODEjs Prisma PostgreSQL",
+    projectTitle: "Lead-Gen AI",
+    projectDescrip: "This project is an AI agent that researches a target company, identifies likely business pain points, finds a decision-maker, and drafts personalized outreach.",
+    live: "Demo <~>",
+    link: "https://eli-5-six.vercel.app/",
+    caseStudyId: "lead-gen-ai",
+  },
+  {
+    img: Uatvote,
+    projectTools: "NEXT.JS NODEjs PostgreSQL",
+    projectTitle: "UAT Vote",
+    projectDescrip: "Digital Voting System",
+    live: "Live <~>",
+    link: "https://uatvote.vercel.app/",
+    caseStudyId: "uat-vote",
+  },
   {
     img: DOIT,
     projectTools: "NEXT.JS TYPESCRIPT TAILWIND",
@@ -20,6 +49,7 @@ const projects = [
     projectDescrip: "Task Management App",
     live: "Live <~>",
     link: "https://do-it-management.vercel.app/",
+    caseStudyId: "doit",
   },
   {
     img: ELI5,
@@ -28,23 +58,7 @@ const projects = [
     projectDescrip: "AI summaries and sentiment for the latest crypto and finances stories",
     live: "Live <~>",
     link: "https://eli-5-six.vercel.app/",
-
-  },
-  {
-    img: Mecha,
-    projectTools: "Nodejs Expressjs Prisma ",
-    projectTitle: "Power as you go",
-    projectDescrip: "Power as you go is an IoT-enabled electricity credit management backend for smart prepaid meters.",
-    live: "Live <~>",
-    link: "https://github.com/Oluwaseyi-vibex/mechanics-backend",
-  },
-  {
-    img: Uatvote,
-    projectTools: "NEXT.JS JSX NODEjs PostgreSQL",
-    projectTitle: "UAT Vote",
-    projectDescrip: "Digital Voting System",
-    live: "Live <~>",
-    link: "https://uatvote.vercel.app/",
+    caseStudyId: "eli5",
   },
   {
     img: hoggImg,
@@ -53,6 +67,7 @@ const projects = [
     projectDescrip: "Hogg Anderson website",
     live: "Live <~>",
     link: "https://www.hogganderson.com.ng/",
+    caseStudyId: "hogg-anderson",
   },
   {
     img: alagonImg,
@@ -61,6 +76,7 @@ const projects = [
     projectDescrip: "Alagon Energy landing page",
     live: "Live <~>",
     link: "https://alagon-energy.vercel.app/",
+    caseStudyId: "alagon-energy",
   },
 
 ];
@@ -76,21 +92,26 @@ const Projects = () => {
         (card): card is HTMLDivElement => card !== null,
       );
 
-      gsap.fromTo(
-        cards,
-        { y: 120, opacity: 0 },
-        {
+      // Set initial hidden state for all cards
+      gsap.set(cards, { y: 60, opacity: 0, scale: 0.92, rotateX: 6 });
+
+      // Each card gets its own ScrollTrigger — fires independently on scroll
+      cards.forEach((card, i) => {
+        gsap.to(card, {
           y: 0,
           opacity: 1,
-          duration: 0.9,
-          stagger: 0.2,
+          scale: 1,
+          rotateX: 0,
+          duration: 0.75,
           ease: "power3.out",
+          delay: (i % 3) * 0.1, // subtle stagger within each row
           scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
+            trigger: card,
+            start: "top 88%",
+            toggleActions: "play none none none",
           },
-        },
-      );
+        });
+      });
 
       gsap.to(projectText.current, {
         duration: 1,
@@ -125,7 +146,10 @@ const Projects = () => {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 grid-cols-1 place-items-stretch place-content-center w-full md:px-[100px] gap-[16px]">
+      <div
+        className="grid sm:grid-cols-2 md:grid-cols-3 grid-cols-1 place-items-stretch place-content-center w-full md:px-[100px] gap-[16px]"
+        style={{ perspective: "1000px" }}
+      >
         {projects.map((project, index) => (
           <div
             key={project.projectTitle}
