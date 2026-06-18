@@ -188,46 +188,73 @@ export const caseStudies: CaseStudy[] = [
     },
   },
   {
-    id: "eli5",
-    title: "ELI5",
+    id: "sillyai",
+    title: "SillyAI",
     period: "Personal project",
-    stack: ["React", "Vite", "Tailwind CSS"],
-    tags: ["frontend", "ai", "fintech"],
-    liveUrl: "https://eli-5-six.vercel.app/",
+    stack: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "Prisma", "Lua AI", "Cencori"],
+    tags: ["frontend", "backend", "ai", "education"],
+
+    liveUrl: "https://silly-ai-frontend.vercel.app/",
+
     problem: {
       context:
-        "Finance and crypto news moves fast; readers want plain-language summaries and sentiment without reading five full articles.",
+        "Most online learners struggle with scattered resources, unclear learning paths, and content that doesn't match their current knowledge level. SillyAI was built to solve this by generating structured, personalized learning journeys using AI.",
+
       constraint:
-        "Browser-only client with API keys that cannot ship in the bundle — summaries have to flow through a backend or proxy you control.",
+        "The system had to generate structured learning paths in a strict JSON format while keeping explanations simple, adaptive, and consistent across different topics and user levels.",
+
       failureMode:
-        "Fetching raw RSS HTML in the browser hit CORS walls, and dumping full article text into the model burned tokens on navigation chrome and ads.",
+        "Early versions produced unstructured AI responses, inconsistent lesson formatting, and overly complex explanations that were not suitable for beginners or ELI5-style learning.",
     },
+
     decisions: [
       {
-        what: "Normalized articles through a backend fetch layer before summarization.",
+        what: "Enforced a strict 6-lesson learning structure for every topic.",
         rejected:
-          "Client-side fetch to each publisher — blocked by CORS and inconsistent HTML.",
-        reason: "Server can strip boilerplate and cap input length predictably.",
+          "Free-form AI lesson generation without structure.",
+        reason:
+          "Consistency across all learning paths makes navigation and progression predictable for users.",
       },
+
       {
-        what: "Returned structured summary fields (headline, bullets, sentiment) instead of markdown-only blobs.",
+        what: "Designed a structured JSON schema for AI outputs (lessons, content, resources).",
         rejected:
-          "Unstructured paragraph — harder to scan in a card grid and inconsistent length.",
-        reason: "UI cards map 1:1 to fields; users compare stories side by side.",
+          "Plain text AI responses or markdown-based lessons.",
+        reason:
+          "JSON allows deterministic rendering of lesson cards and improves frontend reliability.",
       },
+
       {
-        what: "Built the UI with Vite + React for fast iteration on card layouts.",
+        what: "Implemented adaptive explanation levels (Beginner, Intermediate, Advanced).",
         rejected:
-          "Next.js — SSR not required for a read-heavy feed behind client navigation.",
-        reason: "Vite dev server feedback loop was faster for UI-only tweaks.",
+          "One-size-fits-all explanations.",
+        reason:
+          "Users learn faster when content matches their current understanding level.",
+      },
+
+      {
+        what: "Separated learning path generation from lesson rendering.",
+        rejected:
+          "Generating full UI-ready content in a single AI call.",
+        reason:
+          "Improves performance, reusability, and allows users to revisit lessons independently.",
+      },
+
+      {
+        what: "Used Vite + React for fast UI iteration and smooth state handling.",
+        rejected:
+          "Next.js SSR-heavy setup.",
+        reason:
+          "SillyAI is interaction-heavy and does not require SSR for SEO-driven pages.",
       },
     ],
+
     outcome: {
       shipped:
-        "Live demo summarizing fetched finance/crypto stories with sentiment labels. Uptime and per-summary cost metrics were not tracked in the repo.",
+        "A working AI learning platform that generates structured, step-by-step learning paths with explanations, analogies, real-world examples, and curated resources.",
       metric: null,
       retrospective:
-        "Would cache summaries by canonical article URL — reloading the feed re-paid for the same story too often during development.",
+        "Future improvement would include caching generated learning paths per topic + user level to reduce repeated AI generation costs and improve response speed.",
     },
   },
   {
@@ -255,7 +282,7 @@ export const caseStudies: CaseStudy[] = [
       {
         what: "Prioritized mobile type scale and tap targets before desktop polish.",
         rejected:
-        "Desktop-first comp from a PDF — common in agency handoffs but misorders real analytics for Nigerian mobile share.",
+          "Desktop-first comp from a PDF — common in agency handoffs but misorders real analytics for Nigerian mobile share.",
         reason: "Most contact intents will happen on a phone between meetings.",
       },
       {
