@@ -34,6 +34,15 @@ const projects = [
     caseStudyId: "lead-gen-ai",
   },
   {
+    img: Silly,
+    projectTools: "React Vite LUA-AI NODEjs PostgreSQL",
+    projectTitle: "SillyAI",
+    projectDescrip: "Personalized learning paths that adapt to your level and pace",
+    live: "Live <~>",
+    link: "https://silly-ai-frontend.vercel.app/",
+    caseStudyId: "sillyai",
+  },
+  {
     img: Uatvote,
     projectTools: "NEXT.JS NODEjs PostgreSQL",
     projectTitle: "UAT Vote",
@@ -50,15 +59,6 @@ const projects = [
     live: "Live <~>",
     link: "https://do-it-management.vercel.app/",
     caseStudyId: "doit",
-  },
-  {
-    img: Silly,
-    projectTools: "React Vite TAILWIND",
-    projectTitle: "SillyAI",
-    projectDescrip: "Personalized learning paths that adapt to your level and pace",
-    live: "Live <~>",
-    link: "https://silly-ai-frontend.vercel.app/",
-    caseStudyId: "sillyai",
   },
   {
     img: hoggImg,
