@@ -8,7 +8,7 @@ import DOIT from "../assets/doit.png";
 import hoggImg from "../assets/hogg.png";
 import Uatvote from "../assets/uatvote.png";
 import ProjectsCard from "./projectsCard";
-import ELI5 from "../assets/ELI5.png"
+import Silly from "../assets/Silly.png"
 import LeadGen from "../assets/leadgen.png"
 import Mecha from "../assets/mecha.png"
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -30,7 +30,7 @@ const projects = [
     projectTitle: "Lead-Gen AI",
     projectDescrip: "This project is an AI agent that researches a target company, identifies likely business pain points, finds a decision-maker, and drafts personalized outreach.",
     live: "Demo <~>",
-    link: "https://eli-5-six.vercel.app/",
+    link: "https://drive.google.com/file/d/1y7AG7UrCylIdqG3VTqoE9X4cbSeRopss/view?usp=sharing",
     caseStudyId: "lead-gen-ai",
   },
   {
@@ -52,13 +52,13 @@ const projects = [
     caseStudyId: "doit",
   },
   {
-    img: ELI5,
+    img: Silly,
     projectTools: "React Vite TAILWIND",
-    projectTitle: "ELI5",
-    projectDescrip: "AI summaries and sentiment for the latest crypto and finances stories",
+    projectTitle: "SillyAI",
+    projectDescrip: "Personalized learning paths that adapt to your level and pace",
     live: "Live <~>",
-    link: "https://eli-5-six.vercel.app/",
-    caseStudyId: "eli5",
+    link: "https://silly-ai-frontend.vercel.app/",
+    caseStudyId: "sillyai",
   },
   {
     img: hoggImg,

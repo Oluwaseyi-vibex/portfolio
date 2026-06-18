@@ -404,14 +404,22 @@ const Header = () => {
               </div>
 
               <div className="hero-cta flex flex-col items-center justify-center gap-4 md:gap-4 md:flex-row mt-10 md:mt-8">
+                <a target="_blank" rel="noopener noreferrer" href="https://dev.to/oluwaseyivibex">
+                  <button className="px-[16px] py-[8px] border-solid border-[1px] border-[#C778DD] text-white hover:bg-[#C778DD]/20">
+                    My articles
+                  </button>
+                </a>
+
                 <a
                   target="_blank"
                   rel="noreferrer"
                   href="https://wa.me/message/EOGGOVOH5LACP1"
                   className="px-[16px] py-[8px] border-solid border-[1px] border-[#C778DD] text-white hover:bg-[#C778DD]/20"
                 >
-                  <button>Contact me!!</button>
+                  <button>Contact me</button>
                 </a>
+
+
               </div>
 
 

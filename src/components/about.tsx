@@ -75,12 +75,12 @@ const About: React.FC = () => {
                 {" "}
                 Kodeleyiri Oluwaseyifunmi Ezekiel
               </span>
-              , a passionate full-stack developer dedicated to building
+              , a passionate full-stack mobile and web app software engineer dedicated to building
               seamless, scalable, and intuitive digital experiences. I work
               across both frontend and backend systems, bringing ideas to life
               with clean architecture, modern frameworks, and well-crafted user
               interfaces. <br /> I specialize in technologies like React,
-              Next.js, Tailwind CSS, JavaScript, Node.js, and Express, allowing
+              Next.js, React-Native, JavaScript, Node.js, allowing
               me to create fast, responsive applications from concept to
               deployment. Whether it's designing smooth user flows or
               engineering robust backend logic, I love turning complex problems
