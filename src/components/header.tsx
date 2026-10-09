@@ -363,7 +363,7 @@ const Header = () => {
                   ref={(el) => { heroTexts.current[1] = el; }}
                   className="hero-heading-line text-[#C778DD] relative z-20 text-[20px] md:text-[32px] text-center font-semibold leading-normal"
                 >
-                  {"<h2>"}Software Engineer | Full-Stack | Data & Business Systems{"</h2>"}
+                  {"<h2>"}Software Engineer{"</h2>"}
                 </div>
               </div>
 

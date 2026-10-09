@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="pearBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#B7F59B"/>
+      <stop offset="55%" stop-color="#7ED957"/>
+      <stop offset="100%" stop-color="#4CAF50"/>
+    </linearGradient>
+    <linearGradient id="pearShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="#282C33"/>
+  <rect x="1" y="1" width="798" height="498" fill="none" stroke="#ABB2BF" stroke-opacity="0.25" stroke-width="2"/>
+
+  <!-- faint decorative dots -->
+  <g fill="#C778DD" opacity="0.18">
+    <circle cx="90" cy="80" r="6"/>
+    <circle cx="130" cy="80" r="6"/>
+    <circle cx="170" cy="80" r="6"/>
+    <circle cx="90" cy="120" r="6"/>
+    <circle cx="130" cy="120" r="6"/>
+    <circle cx="170" cy="120" r="6"/>
+    <circle cx="660" cy="400" r="6"/>
+    <circle cx="700" cy="400" r="6"/>
+    <circle cx="660" cy="440" r="6"/>
+    <circle cx="700" cy="440" r="6"/>
+  </g>
+
+  <!-- pear fruit -->
+  <g>
+    <!-- body -->
+    <path d="M400 118
+             C 372 118, 356 142, 352 168
+             C 348 196, 330 212, 314 236
+             C 292 270, 282 306, 292 342
+             C 304 388, 344 414, 400 414
+             C 456 414, 496 388, 508 342
+             C 518 306, 508 270, 486 236
+             C 470 212, 452 196, 448 168
+             C 444 142, 428 118, 400 118 Z"
+          fill="url(#pearBody)"/>
+    <!-- highlight -->
+    <path d="M400 118
+             C 372 118, 356 142, 352 168
+             C 348 196, 330 212, 314 236
+             C 292 270, 282 306, 292 342
+             C 304 388, 344 414, 400 414
+             C 456 414, 496 388, 508 342
+             C 518 306, 508 270, 486 236
+             C 470 212, 452 196, 448 168
+             C 444 142, 428 118, 400 118 Z"
+          fill="url(#pearShade)"/>
+    <!-- left shading -->
+    <ellipse cx="338" cy="320" rx="26" ry="60" fill="#2E7D32" opacity="0.25" transform="rotate(-12 338 320)"/>
+    <!-- stem -->
+    <path d="M400 118 C 400 100, 404 86, 414 74" stroke="#6D4C41" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <!-- leaf -->
+    <path d="M414 78 C 448 58, 492 60, 516 84 C 490 108, 442 106, 414 78 Z" fill="#66BB6A"/>
+    <path d="M414 78 C 448 82, 482 84, 512 84" stroke="#388E3C" stroke-width="3" fill="none" opacity="0.7"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="400" y="462" text-anchor="middle" font-family="monospace, monospace" font-size="34" font-weight="bold" fill="#FFFFFF" letter-spacing="8">PEAR</text>
+</svg>

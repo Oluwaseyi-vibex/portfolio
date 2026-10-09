@@ -8,7 +8,7 @@ import Silly from "../assets/Silly.png"
 import MyleImg from "../assets/myle.png"
 import Mecha from "../assets/mecha.png"
 import LensImg from "../assets/lens.png"
-import PearImg from "../assets/arthub.png"
+import PearImg from "../assets/pear.svg"
 import GrabitImg from "../assets/grabit.png"
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
