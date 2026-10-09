@@ -76,7 +76,11 @@ const commandRegistry: Record<string, TerminalCommand> = {
       ),
       createLine(
         { text: "Role: ", tone: "dim" },
-        { text: "Full-stack developer building thoughtful web products." },
+        { text: "Software Engineer | Full-Stack Developer | Data & Business Systems Enthusiast." },
+      ),
+      createLine(
+        { text: "Focus: ", tone: "dim" },
+        { text: "CS graduate, 5+ yrs across web/mobile — banking & finance efficiency." },
       ),
     ],
   },
@@ -85,15 +89,15 @@ const commandRegistry: Record<string, TerminalCommand> = {
     exec: () => [
       createLine(
         { text: "[Frontend] ", tone: "accent" },
-        { text: "React, Vite, Tailwind CSS, TypeScript" },
+        { text: "React, Next.js, React Native, Expo, TypeScript, Tailwind, Redux Toolkit, Zustand" },
       ),
       createLine(
         { text: "[Backend]  ", tone: "accent" },
-        { text: "Node.js, Express, Prisma, PostgreSQL" },
+        { text: "Node.js, Express, FastAPI, Prisma, PostgreSQL, Redis, BullMQ, GoLang" },
       ),
       createLine(
-        { text: "[Workflow] ", tone: "accent" },
-        { text: "GSAP, GitHub, product thinking, shipping fast" },
+        { text: "[Data]     ", tone: "accent" },
+        { text: "Data Analysis, Validation, Excel, Reporting" },
       ),
     ],
   },
@@ -101,16 +105,20 @@ const commandRegistry: Record<string, TerminalCommand> = {
     description: "Surface a few featured builds from the portfolio.",
     exec: () => [
       createLine(
-        { text: "Power as you go", tone: "highlight" },
-        { text: "  IoT-enabled electricity credit management backend." },
+        { text: "Lens", tone: "highlight" },
+        { text: "  AI CFO for SMEs — cash-flow intel on web + WhatsApp." },
       ),
       createLine(
-        { text: "Lead-Gen AI", tone: "highlight" },
-        { text: "      Research + outreach automation for sales teams." },
+        { text: "Myle", tone: "highlight" },
+        { text: "  AI lead-gen & CRM — discovery, scoring, pipelines." },
       ),
       createLine(
-        { text: "ELI5", tone: "highlight" },
-        { text: "              AI summaries for finance and crypto stories." },
+        { text: "Pear", tone: "highlight" },
+        { text: "  Creator-brand marketplace — mobile discovery + matching." },
+      ),
+      createLine(
+        { text: "Grabit", tone: "highlight" },
+        { text: " 2D social multiplayer in the browser." },
       ),
     ],
   },

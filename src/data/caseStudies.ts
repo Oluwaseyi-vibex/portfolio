@@ -2,6 +2,196 @@ import type { CaseStudy } from "../types/caseStudy";
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "lens",
+    title: "Lens (AI CFO for SMEs)",
+    period: "Co-founder & Lead Engineer",
+    stack: ["TypeScript", "Node.js", "PostgreSQL", "Redis", "BullMQ", "Next.js"],
+    tags: ["ai", "fintech", "full-stack"],
+    liveUrl: "https://heylens.orzn.app/",
+    problem: {
+      context:
+        "Small and medium-sized businesses struggle to understand cash flow, monitor financial health, and make data-driven decisions — finance data lives scattered across bank accounts and spreadsheets.",
+      constraint:
+        "Had to aggregate sensitive banking data securely while keeping AI report generation affordable and delivering insights on both web and WhatsApp.",
+      failureMode:
+        "Without automated aggregation and forecasting, owners make decisions on stale balances and miss cash-flow crunches until accounts run dry.",
+    },
+    decisions: [
+      {
+        what: "Integrated open banking infrastructure to securely connect business bank accounts and automate financial data aggregation.",
+        rejected:
+          "Manual CSV uploads only — simpler but stale data and high friction for non-technical owners.",
+        reason:
+          "Live connections keep cash-flow views current without weekly export chores.",
+      },
+      {
+        what: "Built AI-generated financial reports, cash flow forecasting, spending analysis, and performance insights delivered through web and WhatsApp.",
+        rejected:
+          "Web-only dashboard — misses owners who live in chat apps day to day.",
+        reason: "Meeting users where they are doubles the chance reports get read.",
+      },
+      {
+        what: "Designed scalable backend with subscription billing, report scheduling, and multi-tenant architecture using TypeScript, Node.js, PostgreSQL, Redis, and BullMQ.",
+        rejected:
+          "Single-tenant prototype DB — faster initially but billing and scheduled jobs become rewrites later.",
+        reason: "Multi-tenancy plus queued report jobs scales from first paying SME to many.",
+      },
+      {
+        what: "Led product architecture, API integrations, infrastructure design, and end-to-end deployment from concept to production.",
+        rejected:
+          "Splitting ownership across contractors — slower decisions on schema and API contracts.",
+        reason: "Single-threaded technical ownership kept banking, AI, and billing pieces coherent.",
+      },
+    ],
+    outcome: {
+      shipped:
+        "Live AI financial intelligence platform at heylens.orzn.app: connected accounts, automated aggregation, AI reports and forecasts on web and WhatsApp, with billing and scheduled reports.",
+      metric: null,
+      retrospective:
+        "Would add anomaly alerts (unusual spend, low-balance warnings) earlier — forecasting is useful, push alerts drive daily retention.",
+    },
+  },
+  {
+    id: "myle",
+    title: "Myle — AI-Powered Lead Generation & CRM",
+    period: "Co-founder & Lead Engineer",
+    stack: ["TypeScript", "Node.js", "PostgreSQL", "Prisma", "Redis", "BullMQ", "Python", "FastAPI"],
+    tags: ["ai", "automation", "backend"],
+    liveUrl: "https://myleshq.vercel.app/",
+    problem: {
+      context:
+        "Outbound sales research: for each target company, discover, research, qualify, and manage prospects — work that humans do in 20–40 minutes per lead.",
+      constraint:
+        "High-volume web extraction plus LLM calls cost money and latency; the pipeline had to run async with caching and stay usable without unlimited parallel enrichment.",
+      failureMode:
+        "Manual prospecting produced stale lists and generic outreach — reviewers could not tell if a lead was actually qualified or which buying signal triggered it.",
+    },
+    decisions: [
+      {
+        what: "Designed and developed a dedicated Python/FastAPI scraping microservice for high-volume web data extraction and lead discovery.",
+        rejected:
+          "Scraping inside the main Node API — blocks event loop and couples deploys to crawler changes.",
+        reason: "Isolated service scales extraction independently and keeps the core API responsive.",
+      },
+      {
+        what: "Architected an asynchronous lead discovery pipeline using BullMQ and Redis for background processing, caching, and scalable data enrichment.",
+        rejected:
+          "Synchronous request/response enrichment — timeouts on slow sites and no retry story.",
+        reason: "Queues give retries, caching cuts repeat LLM/scrape cost, and enrichment scales horizontally.",
+      },
+      {
+        what: "Built AI-powered workflows for company research, lead enrichment, decision-maker identification, buying-signal detection, and deterministic lead scoring.",
+        rejected:
+          "One-shot mega-prompt — faster to wire, impossible to debug which stage introduced a bad name or score.",
+        reason: "Staged pipeline with scoring makes qualification auditable instead of vibes-based.",
+      },
+      {
+        what: "Developed CRM functionality for companies, contacts, activities, notes, tasks, and timelines with multi-tenant architecture, RBAC, API integrations, and analytics.",
+        rejected:
+          "External CRM sync only — leaves users without a home for enriched context.",
+        reason: "Built-in CRM keeps research, scoring, and follow-ups in one loop.",
+      },
+    ],
+    outcome: {
+      shipped:
+        "Live platform at myleshq.vercel.app: lead discovery, AI research and scoring, CRM with companies/contacts/activities, multi-tenant RBAC, and automated workflows.",
+      metric: null,
+      retrospective:
+        "Would add a cheap sitemap/careers-page fetch before the first LLM call — cuts hallucinated titles when homepages are sparse.",
+    },
+  },
+  {
+    id: "pear",
+    title: "Pear | Creator-Brand Marketplace",
+    period: "Mobile project",
+    stack: ["React Native", "Expo", "TypeScript", "JWT"],
+    tags: ["mobile", "marketplace", "full-stack"],
+    problem: {
+      context:
+        "Content creators and brands struggle to find each other — profile discovery, campaign opportunities, and mutual-match interactions live across DMs and spreadsheets.",
+      constraint:
+        "Cross-platform mobile with role-based onboarding (creator vs brand), swipe discovery, matching, and messaging — all with a consistent themed UI.",
+      failureMode:
+        "Without structured profiles and mutual matching, outreach is spammy and both sides waste time on misaligned campaigns.",
+    },
+    decisions: [
+      {
+        what: "Implemented authentication and onboarding flows including email sign-up/sign-in, role-based onboarding, and creator/brand profile creation.",
+        rejected:
+          "Single generic profile — simpler forms but brands and creators need different fields.",
+        reason: "Role-based flows capture the right data up front for discovery and matching.",
+      },
+      {
+        what: "Developed a typed API client with JWT authentication, secure token storage using Expo SecureStore, and structured API error handling.",
+        rejected:
+          "AsyncStorage tokens with ad-hoc fetch calls — leaks credentials and scatters error handling.",
+        reason: "SecureStore plus typed client keeps auth safe and API errors predictable.",
+      },
+      {
+        what: "Built swipe-based discovery feeds, campaign browsing screens, and navigation for matches and messaging.",
+        rejected:
+          "List-only directory — functional but slow to triage many profiles.",
+        reason: "Swipe interaction matches the mutual-match mental model and speeds discovery.",
+      },
+      {
+        what: "Implemented reusable UI components, centralized design tokens, and dark/light themes.",
+        rejected:
+          "Per-screen styles — faster initially, inconsistent experience as screens grow.",
+        reason: "Tokens and shared components keep the marketplace feeling like one product.",
+      },
+    ],
+    outcome: {
+      shipped:
+        "Cross-platform mobile marketplace: auth, onboarding, discovery feeds, swipes, matching, messaging, and themed reusable UI.",
+      metric: null,
+      retrospective:
+        "Would add server-driven campaign recommendations earlier — swipe feeds need ranking to stay useful past the first hundred profiles.",
+    },
+  },
+  {
+    id: "grabit",
+    title: "Grabit (Social Multiplayer Platform)",
+    period: "Solo build & launch",
+    stack: ["Next.js", "TypeScript", "Vercel", "Real-time"],
+    tags: ["full-stack", "real-time", "social"],
+    liveUrl: "https://grabit.lol",
+    problem: {
+      context:
+        "Browser-based 2D social multiplayer: users interact and connect in shared real-time environments — presence, movement, and interactions must stay in sync.",
+      constraint:
+        "Solo end-to-end build (auth, state sync, persistence, deploy) with no ops team — every extra service is maintenance.",
+      failureMode:
+        "Naive state broadcast desyncs clients under latency — players see different rooms and interactions get lost.",
+    },
+    decisions: [
+      {
+        what: "Built the application end-to-end including authentication, multiplayer state synchronization, user interactions, and persistent data.",
+        rejected:
+          "Bolting a chat widget onto a static page — misses shared presence entirely.",
+        reason: "Real-time state is the product, not an add-on.",
+      },
+      {
+        what: "Designed a modular environment system supporting multiple interactive themes and extensible social features.",
+        rejected:
+          "Single hardcoded map — ships faster once, painful to extend with new themes.",
+        reason: "Modular environments let new social spaces ship without touching sync logic.",
+      },
+      {
+        what: "Deployed and maintained production on Vercel, owning architecture, development, and launch.",
+        rejected:
+          "Self-hosted VMs — more control but on-call burden for a solo dev.",
+        reason: "Managed deploys match spike-y social traffic without ops overhead.",
+      },
+    ],
+    outcome: {
+      shipped:
+        "Live at grabit.lol: 2D social multiplayer with auth, sync, themed environments, and persistent data on Vercel.",
+      metric: null,
+      retrospective:
+        "Would add client-side prediction plus server reconciliation earlier — smooths movement on high-latency mobile networks.",
+    },
+  },
+  {
     id: "power-as-you-go",
     title: "Power as you go",
     period: "Personal project",
@@ -10,7 +200,7 @@ export const caseStudies: CaseStudy[] = [
     repoUrl: "https://github.com/Oluwaseyi-vibex/mechanics-backend",
     problem: {
       context:
-        "Prepaid electricity for smart meters: vendors sell credit, meters consume it, and balances must stay consistent across devices that connect intermittently.",
+        "Prepaid electricity for smart meters: vendors sell credit, meters consume it, and balances must stay consistent across devices that connect intermittently. Helps SMEs and individuals monitor meter credit, automate top-ups, and keep receipts organized in one dashboard.",
       constraint:
         "Solo build with no dedicated ops team — every extra service (message bus, second database, custom auth) is ongoing maintenance.",
       failureMode:
@@ -50,141 +240,6 @@ export const caseStudies: CaseStudy[] = [
       metric: null,
       retrospective:
         "Would add automated property tests on ledger invariants earlier — caught edge cases manually that a model checker would have found in CI.",
-    },
-  },
-  {
-    id: "lead-gen-ai",
-    title: "Lead-Gen AI",
-    period: "Personal project",
-    stack: ["Node.js", "Prisma", "PostgreSQL", "LUA-AI"],
-    tags: ["ai", "automation", "backend"],
-    liveUrl: "https://eli-5-six.vercel.app/",
-    problem: {
-      context:
-        "Outbound sales research: for each target company, find pain points, a decision-maker, and a draft message — work that humans do in 20–40 minutes per lead.",
-      constraint:
-        "LLM calls cost money and latency; the pipeline had to stay usable on a free-tier demo budget without unlimited parallel enrichment.",
-      failureMode:
-        "Early prototypes returned fluent but generic emails — same opener structure every time — so reviewers could not tell if the agent had actually read the company site or hallucinated a VP title.",
-    },
-    decisions: [
-      {
-        what: "Split the pipeline into discrete stages (company scrape → pain hypotheses → contact hunt → draft) with persisted intermediate JSON.",
-        rejected:
-          "One-shot mega-prompt — faster to wire, impossible to debug which stage introduced a bad name or off-topic pain point.",
-        reason: "Stage outputs let you re-run only the failed step and compare before/after in the database.",
-      },
-      {
-        what: "Stored runs and outputs in PostgreSQL via Prisma.",
-        rejected:
-          "Ephemeral in-memory cache — fine for a hackathon, useless when you need to audit why a lead was skipped.",
-        reason: "Demo users refresh the page; durable rows keep the story of each run.",
-      },
-      {
-        what: "Constrained outreach drafts with a structured template (role, observed signal, ask) instead of free-form prose only.",
-        rejected:
-          "Fully open-ended completion — produced longer, more varied text that still sounded like marketing spam.",
-        reason: "Structure forces the model to cite something specific from earlier stages or leave a blank.",
-      },
-      {
-        what: "Used LUA-AI for orchestration rather than hand-rolling every provider SDK call in route handlers.",
-        rejected:
-          "Direct OpenAI SDK in each Express route — fewer dependencies but scatters retry and token logic.",
-        reason: "Central orchestration keeps rate-limit handling in one place as providers change.",
-      },
-    ],
-    outcome: {
-      shipped:
-        "End-to-end demo: research a company URL, persist stages, export a draft message. Human-in-the-loop send and CRM sync were out of scope.",
-      metric: null,
-      retrospective:
-        "Would add a cheap retrieval step (sitemap or careers page fetch) before the first LLM call — cuts hallucinated titles when the homepage is sparse.",
-    },
-  },
-  {
-    id: "uat-vote",
-    title: "UAT Vote",
-    period: "Personal project",
-    stack: ["Next.js", "Node.js", "PostgreSQL"],
-    tags: ["full-stack", "auth", "real-time"],
-    liveUrl: "https://uatvote.vercel.app/",
-    problem: {
-      context:
-        "Campus-style digital voting: students authenticate, cast one ballot per election, and admins need tallies without handling paper slips.",
-      constraint:
-        "Election windows are short — downtime during peak voting loses trust fast, but the team size did not justify Kubernetes.",
-      failureMode:
-        "Without a hard one-vote-per-identity rule at the database layer, race conditions or double-clicks could insert two ballots before the UI showed 'already voted'.",
-    },
-    decisions: [
-      {
-        what: "Enforced one ballot per (election_id, voter_id) with a unique database constraint.",
-        rejected:
-          "Check-then-insert in application code only — classic TOCTOU gap under concurrent submits.",
-        reason: "Postgres rejects the second insert; API maps the violation to a clear client error.",
-      },
-      {
-        what: "Separated admin tally routes from voter-facing Next.js pages.",
-        rejected:
-          "Single role flag on the user table checked in shared layouts — easy to mis-wire a page that leaks totals early.",
-        reason: "Route split makes accidental exposure harder during hurried feature adds.",
-      },
-      {
-        what: "Hosted the voter UI on Vercel with a managed Postgres instance.",
-        rejected:
-          "Self-hosted VM — cheaper at scale but someone has to patch OS packages before exam week.",
-        reason: "Managed deploys match the expected traffic spike pattern without on-call rotation.",
-      },
-    ],
-    outcome: {
-      shipped:
-        "Live voting site with authentication, ballot casting, and admin views. Formal penetration test or load test results are not published.",
-      metric: null,
-      retrospective:
-        "Would add an immutable audit log table (who opened results, when) — current schema proves vote counts, not who viewed them before close.",
-    },
-  },
-  {
-    id: "doit",
-    title: "DOIT",
-    period: "Personal project",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    tags: ["frontend", "product"],
-    liveUrl: "https://do-it-management.vercel.app/",
-    problem: {
-      context:
-        "Personal task management for daily work tracking — lists, status, and quick capture on desktop and phone.",
-      constraint:
-        "Needed to ship a usable UI in days, not design a custom sync protocol from scratch.",
-      failureMode:
-        "First iteration stored tasks only in component state — refresh wiped lists, which made the app feel broken compared to Notes or Todoist.",
-    },
-    decisions: [
-      {
-        what: "Persisted tasks in localStorage with a versioned schema and migration on read.",
-        rejected:
-          "Immediate Firebase/Supabase backend — real multi-device sync but auth and rules before a single user existed.",
-        reason: "Solo user at launch; local persistence unblocked UX while keeping deploy static-friendly.",
-      },
-      {
-        what: "Used Next.js App Router patterns with TypeScript for form and list components.",
-        rejected:
-          "Plain React SPA only — fine, but Next gave file-based routing and deploy defaults for free.",
-        reason: "Familiar deploy path on Vercel aligned with other portfolio apps.",
-      },
-      {
-        what: "Kept task fields minimal (title, status, optional due date) instead of subtasks, tags, and attachments.",
-        rejected:
-          "Full Notion-like model — more impressive demo, slower to make reliable.",
-        reason: "Scope matched actual usage: capture and finish, not portfolio management.",
-      },
-    ],
-    outcome: {
-      shipped:
-        "Live task board with persistent local storage and responsive layout. Cloud sync and accounts were intentionally not shipped.",
-      metric: null,
-      retrospective:
-        "Would extract storage behind an interface on day one — swapping localStorage for an API later touched more components than expected.",
     },
   },
   {
@@ -255,92 +310,6 @@ export const caseStudies: CaseStudy[] = [
       metric: null,
       retrospective:
         "Future improvement would include caching generated learning paths per topic + user level to reduce repeated AI generation costs and improve response speed.",
-    },
-  },
-  {
-    id: "hogg-anderson",
-    title: "Hogg Anderson",
-    period: "Client-style build",
-    stack: ["Next.js", "Tailwind CSS"],
-    tags: ["frontend", "marketing"],
-    liveUrl: "https://www.hogganderson.com.ng/",
-    problem: {
-      context:
-        "Professional services firm site: establish credibility, surface practice areas, and route visitors to contact — mostly static content, mobile-heavy traffic.",
-      constraint:
-        "Content updates would come from non-developers; the layout had to stay stable when copy changed.",
-      failureMode:
-        "Previous presence was fragmented — outdated pages and inconsistent typography made the firm look smaller than it is and buried the contact path below unrelated sections.",
-    },
-    decisions: [
-      {
-        what: "Built as a Next.js marketing site with reusable section components (hero, services, contact).",
-        rejected:
-          "WordPress theme — faster for editors but heavier hosting and plugin maintenance for a small page count.",
-        reason: "Page count is low; component reuse keeps visual consistency without a CMS bill.",
-      },
-      {
-        what: "Prioritized mobile type scale and tap targets before desktop polish.",
-        rejected:
-          "Desktop-first comp from a PDF — common in agency handoffs but misorders real analytics for Nigerian mobile share.",
-        reason: "Most contact intents will happen on a phone between meetings.",
-      },
-      {
-        what: "Deployed on Vercel with the production domain on managed DNS.",
-        rejected:
-          "Shared cPanel hosting — cheaper headline price, slower TLS and deploy story.",
-        reason: "Preview URLs let stakeholders sign off before DNS cutover.",
-      },
-    ],
-    outcome: {
-      shipped:
-        "Production marketing site on the live domain. Analytics baseline (bounce rate, contact clicks) was not shared for this write-up.",
-      metric: null,
-      retrospective:
-        "Would bake in a lightweight content config (JSON or MDX) earlier — some copy changes still required a dev pass instead of a safe editor handoff.",
-    },
-  },
-  {
-    id: "alagon-energy",
-    title: "Alagon Energy",
-    period: "Personal project",
-    stack: ["Next.js", "Tailwind CSS"],
-    tags: ["frontend", "marketing"],
-    liveUrl: "https://alagon-energy.vercel.app/",
-    problem: {
-      context:
-        "Landing page for an energy brand: explain offering, build trust, drive inquiry — no logged-in product surface.",
-      constraint:
-        "Needed to ship quickly on a portfolio timeline; no backend requirements beyond static content and forms.",
-      failureMode:
-        "Generic template landings in the same niche bury the value prop — visitors bounce when hero copy does not say what Alagon does in the first viewport.",
-    },
-    decisions: [
-      {
-        what: "Single-page scroll narrative (problem → offering → proof → contact) instead of multi-route maze.",
-        rejected:
-          "Multi-page site map — more SEO URLs, but splits attention before the brand story lands.",
-        reason: "One scroll matches how stakeholders review a V1: top to bottom in two minutes.",
-      },
-      {
-        what: "Used Tailwind utility layout with a tight custom palette tied to energy branding.",
-        rejected:
-          "Heavy component library theme — faster bootstrapping but harder to avoid 'another SaaS landing' look.",
-        reason: "Custom spacing and color tokens made the page feel owned, not templated.",
-      },
-      {
-        what: "Hosted on Vercel preview + production for instant stakeholder review.",
-        rejected:
-          "Static zip to shared hosting — works, but slower feedback loop on copy tweaks.",
-        reason: "Each push gets a URL; decisions on copy did not wait for FTP.",
-      },
-    ],
-    outcome: {
-      shipped:
-        "Deployed landing on Vercel with live link. Lead form backend and spam filtering were minimal — inquiry path may be mailto or basic form post depending on iteration.",
-      metric: null,
-      retrospective:
-        "Would add real performance budgets (LCP image sizing) before handoff — hero imagery shipped larger than necessary on first pass.",
     },
   },
 ];

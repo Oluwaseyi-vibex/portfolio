@@ -75,16 +75,21 @@ const About: React.FC = () => {
                 {" "}
                 Kodeleyiri Oluwaseyifunmi Ezekiel
               </span>
-              , a passionate full-stack mobile and web app software engineer dedicated to building
-              seamless, scalable, and intuitive digital experiences. I work
-              across both frontend and backend systems, bringing ideas to life
-              with clean architecture, modern frameworks, and well-crafted user
-              interfaces. <br /> I specialize in technologies like React,
-              Next.js, React-Native, JavaScript, Node.js, allowing
-              me to create fast, responsive applications from concept to
-              deployment. Whether it's designing smooth user flows or
-              engineering robust backend logic, I love turning complex problems
-              into elegant solutions.
+              , a Computer Science graduate (University of Africa, Toru-Orua)
+              and software engineer with over five years of experience building
+              scalable applications across web and mobile platforms using
+              Next.js, React, React Native, JavaScript, TypeScript, Node.js,
+              and PostgreSQL. I work across frontend, backend, and data systems
+              — clean architecture, efficient data flow, and responsive user
+              experiences that hold up under real-world usage. <br /> I'm
+              experienced working with teams, analyzing data, and delivering
+              reliable solutions in fast-paced environments. I'm passionate
+              about leveraging technology and analytical thinking to improve
+              operational efficiency and customer experience within the banking
+              and financial sector. I've shipped production systems people
+              actually use — including an AI CFO for SMEs (Lens), an AI lead-gen
+              & CRM platform (Myle), and a meter-credit monitoring dashboard MVP
+              for SMEs and individuals.
             </p>
             <div className="collapse rounded-none">
               <input type="checkbox" className="peer" />
@@ -95,12 +100,11 @@ const About: React.FC = () => {
                 <div className="flex flex-col gap-8 mt-8">
                   <AboutComponents
                     Title="What Do I Do?"
-                    Paragraph="As a fullstack developer, I specialize in building interactive
-                    and responsive websites that not only captivate users but also
-                    provide them with seamless navigation and intuitive
-                    interfaces. My expertise lies in harnessing the power of React
-                    and Next.js to create dynamic web applications that adapt to
-                    various devices and screen sizes effortlessly."
+                    Paragraph="As a full-stack engineer, I build interactive web and mobile products plus the backends and data pipelines behind them — React, Next.js, React Native/Expo on the front, Node.js, PostgreSQL, Prisma, Redis, BullMQ and Python/FastAPI on the back. I also do data analysis, validation, and Excel-based reporting that feeds business decisions."
+                  />
+                  <AboutComponents
+                    Title="Where I've Worked"
+                    Paragraph="Frontend Developer Intern at Maziv Technologies (React, Next.js, Tailwind, GSAP, DaisyUI — performance, reusable components, accessibility, SEO). Software Developer Intern at SkyeStudio (PWA with background push notifications, DB schema, APIs, service workers). Frontend Developer Intern at Bejite (RESTful APIs with Axios, frontend-backend integration). Data Analyst Intern at JSG Industries (cleaned large datasets, validation, weekly/monthly Excel reports). Certified Nomba Developer."
                   />
                   <AboutComponents
                     Title="Why Choose Me?"

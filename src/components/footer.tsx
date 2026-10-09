@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
             </div>
             <p className="text-[#ABB2BF] text-[18px]">oluseyiwmwm@gmail.com</p>
           </div>
-          <p className="text-white text-[18px]">Full-Stack Engineer</p>
+          <p className="text-white text-[18px]">Software Engineer | Full-Stack Developer | Data & Business Systems Enthusiast</p>
         </div>
 
         <div className="gap-4 flex flex-col">
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <p className="text-[#ABB2BF]">© Copyright 2022. Made by Me.</p>
+      <p className="text-[#ABB2BF]">© Copyright 2026. Made by Me.</p>
     </div>
   );
 };

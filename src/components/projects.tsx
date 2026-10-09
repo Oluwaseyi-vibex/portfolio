@@ -3,80 +3,70 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
 
-import alagonImg from "../assets/alagon.png";
-import DOIT from "../assets/doit.png";
-import hoggImg from "../assets/hogg.png";
-import Uatvote from "../assets/uatvote.png";
 import ProjectsCard from "./projectsCard";
 import Silly from "../assets/Silly.png"
-import LeadGen from "../assets/leadgen.png"
+import MyleImg from "../assets/myle.png"
 import Mecha from "../assets/mecha.png"
+import LensImg from "../assets/lens.png"
+import PearImg from "../assets/arthub.png"
+import GrabitImg from "../assets/grabit.png"
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const projects = [
 
   {
+    img: LensImg,
+    projectTools: "TypeScript Node.js PostgreSQL Redis BullMQ",
+    projectTitle: "Lens — AI CFO for SMEs",
+    projectDescrip: "AI-powered financial intelligence: open banking aggregation, cash-flow forecasting, and reports on web + WhatsApp.",
+    live: "Live <~>",
+    link: "https://heylens.orzn.app/",
+    caseStudyId: "lens",
+  },
+  {
+    img: MyleImg,
+    projectTools: "TypeScript Node.js Prisma Redis BullMQ Python FastAPI",
+    projectTitle: "Myle — AI Lead Gen & CRM",
+    projectDescrip: "AI lead discovery, enrichment, scoring, and full CRM for companies, contacts, and timelines.",
+    live: "Live <~>",
+    link: "https://myleshq.vercel.app/",
+    caseStudyId: "myle",
+  },
+  {
+    img: PearImg,
+    projectTools: "React Native Expo TypeScript JWT",
+    projectTitle: "Pear | Creator-Brand Marketplace",
+    projectDescrip: "Cross-platform mobile marketplace connecting creators with brands — discovery, swipes, matches, messaging.",
+    live: "Case study <~>",
+    link: "https://github.com/Oluwaseyi-vibex?tab=repositories",
+    caseStudyId: "pear",
+  },
+  {
+    img: GrabitImg,
+    projectTools: "Next.js TypeScript Real-time Vercel",
+    projectTitle: "Grabit — Social Multiplayer",
+    projectDescrip: "Browser-based 2D social multiplayer platform with shared real-time environments.",
+    live: "Live <~>",
+    link: "https://grabit.lol",
+    caseStudyId: "grabit",
+  },
+  {
     img: Mecha,
     projectTools: "Nodejs Prisma PostgreSQL",
     projectTitle: "Power as you go",
-    projectDescrip: "Power as you go is an IoT-enabled electricity credit management backend for smart prepaid meters.",
-    live: "Live <~>",
+    projectDescrip: "IoT-enabled electricity credit management backend for smart prepaid meters — monitor credit, automate top-ups, receipts in one dashboard.",
+    live: "Repo <~>",
     link: "https://github.com/Oluwaseyi-vibex/mechanics-backend",
     caseStudyId: "power-as-you-go",
-  },
-  {
-    img: LeadGen,
-    projectTools: "LUA-AI NODEjs Prisma PostgreSQL",
-    projectTitle: "Lead-Gen AI",
-    projectDescrip: "This project is an AI agent that researches a target company, identifies likely business pain points, finds a decision-maker, and drafts personalized outreach.",
-    live: "Demo <~>",
-    link: "https://drive.google.com/file/d/1y7AG7UrCylIdqG3VTqoE9X4cbSeRopss/view?usp=sharing",
-    caseStudyId: "lead-gen-ai",
   },
   {
     img: Silly,
     projectTools: "React Vite LUA-AI NODEjs PostgreSQL",
     projectTitle: "SillyAI",
-    projectDescrip: "Personalized learning paths that adapt to your level and pace",
+    projectDescrip: "Personalized AI learning paths that adapt to your level and pace",
     live: "Live <~>",
     link: "https://silly-ai-frontend.vercel.app/",
     caseStudyId: "sillyai",
-  },
-  {
-    img: Uatvote,
-    projectTools: "NEXT.JS NODEjs PostgreSQL",
-    projectTitle: "UAT Vote",
-    projectDescrip: "Digital Voting System",
-    live: "Live <~>",
-    link: "https://uatvote.vercel.app/",
-    caseStudyId: "uat-vote",
-  },
-  {
-    img: DOIT,
-    projectTools: "NEXT.JS TYPESCRIPT TAILWIND",
-    projectTitle: "DOIT",
-    projectDescrip: "Task Management App",
-    live: "Live <~>",
-    link: "https://do-it-management.vercel.app/",
-    caseStudyId: "doit",
-  },
-  {
-    img: hoggImg,
-    projectTools: "NEXT.JS JSX TAILWIND",
-    projectTitle: "Hogg Anderson",
-    projectDescrip: "Hogg Anderson website",
-    live: "Live <~>",
-    link: "https://www.hogganderson.com.ng/",
-    caseStudyId: "hogg-anderson",
-  },
-  {
-    img: alagonImg,
-    projectTools: "NEXTjs JSX TAILWIND",
-    projectTitle: "Alagon Energy",
-    projectDescrip: "Alagon Energy landing page",
-    live: "Live <~>",
-    link: "https://alagon-energy.vercel.app/",
-    caseStudyId: "alagon-energy",
   },
 
 ];

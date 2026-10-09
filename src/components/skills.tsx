@@ -235,20 +235,20 @@ const Skills: React.FC = () => {
           <div ref={box1}>
             <SkillsComponent
               Title="Languages"
-              Descrip="TypeScript JavaScript HTML CSS"
+              Descrip="TypeScript JavaScript (ES6+) HTML CSS GoLang Python"
             />
           </div>
           <div className="flex flex-row md:flex-col gap-2 md:gap-4">
             <div ref={box4}>
               <SkillsComponent
                 Title="Databases"
-                Descrip="PostgreSQL MongoDB Firebase"
+                Descrip="PostgreSQL Prisma ORM Redis Knex.js LowDB"
               />
             </div>
             <div ref={box2}>
               <SkillsComponent
-                Title="Other"
-                Descrip="Responsive Design REST APIs UI Animation"
+                Title="Data & Reporting"
+                Descrip="Data Analysis Data Validation Microsoft Excel Reporting"
               />
             </div>
           </div>
@@ -256,13 +256,13 @@ const Skills: React.FC = () => {
             <div ref={box5}>
               <SkillsComponent
                 Title="Tools"
-                Descrip="Git GitHub VS Code Figma GSAP DaisyUI Bootstrap Framer-motion"
+                Descrip="Git GitHub VS Code Figma GSAP DaisyUI TanStack Query BullMQ Zod"
               />
             </div>
             <div ref={box3}>
               <SkillsComponent
                 Title="Frameworks"
-                Descrip="React Next.js Tailwind Node.js Express"
+                Descrip="React Next.js React Native Expo Tailwind Node.js Express.js FastAPI Vue Vite Redux Toolkit Zustand MobX"
               />
             </div>
           </div>

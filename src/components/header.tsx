@@ -8,7 +8,6 @@ import DownArrow from "../assets/Group 58.svg";
 // import HeroPixel from "../assets/hero-pixel.png";
 import Dots from "../assets/Dots.svg";
 import HeroStyle from "../assets/HeroStyle1.svg";
-import Qoute from "../assets/quote.svg";
 import Menu from "../assets/menu.png";
 
 import { ScrollTrigger } from "gsap/all";
@@ -175,41 +174,6 @@ const Header = () => {
       cleanups.forEach((cleanup) => cleanup());
     };
   }, []);
-
-  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
-
-  // Array of quotes and their authors
-  const quotes = [
-    {
-      quote: "In the middle of difficulty lies opportunity.",
-      author: "Albert Einstein",
-    },
-    {
-      quote: "The only way to do great work is to love what you do.",
-      author: "Steve Jobs",
-    },
-    {
-      quote: "Believe you can and you're halfway there.",
-      author: "Theodore Roosevelt",
-    },
-    {
-      quote: "It always seems impossible until it's done.",
-      author: "Nelson Mandela",
-    },
-    {
-      quote: "The best way to predict the future is to create it.",
-      author: "Peter Drucker",
-    },
-    // Add more quotes as needed
-  ];
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
-    }, 3000);
-
-    return () => clearInterval(intervalId); // Cleanup function
-  }, [quotes.length]);
 
   const [isToggle, setIsToggle] = useState(false);
 
@@ -386,8 +350,8 @@ const Header = () => {
             </ul>
           )}
 
-          <section ref={DotBoxBarrier} className="h-[100vh] md:h-screen flex flex-col relative ">
-            <div className="relative z-10 w-full mx-auto mt-[70%] md:mt-[50%] flex flex-col items-center justify-center">
+          <section ref={DotBoxBarrier} className="min-h-screen flex flex-col justify-center relative pt-[110px] pb-10">
+            <div className="relative z-10 w-full mx-auto flex flex-col items-center justify-center">
               <div className="flex flex-col gap-2 md items-center justify-center w-full">
                 <div
                   ref={(el) => { heroTexts.current[0] = el; }}
@@ -399,7 +363,7 @@ const Header = () => {
                   ref={(el) => { heroTexts.current[1] = el; }}
                   className="hero-heading-line text-[#C778DD] relative z-20 text-[20px] md:text-[32px] text-center font-semibold leading-normal"
                 >
-                  {"<h2>"}Full-Stack Engineer{"</h2>"}
+                  {"<h2>"}Software Engineer | Full-Stack | Data & Business Systems{"</h2>"}
                 </div>
               </div>
 
@@ -424,29 +388,26 @@ const Header = () => {
 
 
 
-              <div className="flex flex-row items-center justify-center w-full relative mt-4">
+              <div className="flex flex-row items-center justify-center w-full relative mt-10 gap-10">
                 <img
                   ref={class_two}
-                  className="w-[30%] relative bottom-[180px] md:bottom-[220px] right-2 md:right-[15px] z-0 mx-auto"
+                  className="w-[120px] md:w-[150px] z-0"
                   src={HeroStyle}
                   alt="ZigZagImg"
                 />
                 <img
                   ref={DotBox}
-                  className="w-[20%] relative bottom-[210px] md:bottom-[40px] left-[75px] md:left-[250px] z-0 mx-auto"
+                  className="w-[70px] md:w-[90px] z-0"
                   src={Dots}
                   alt="Dots Box"
                 />
               </div>
             </div>
 
-
-
-
-            {/* Sliding indicator bar — pinned to the bottom of the hero section */}
+            {/* Sliding indicator bar — pinned below the hero content */}
             <div
               ref={sliderTrack}
-              className="w-[90%] md:w-[402px] mx-auto p-[8px] border-solid border-[1px] border-white overflow-hidden relative"
+              className="w-[90%] md:w-[402px] mx-auto mt-10 p-[8px] border-solid border-[1px] border-white overflow-hidden relative"
             >
               <div
                 ref={sliderBar}
@@ -454,31 +415,6 @@ const Header = () => {
               />
             </div>
           </section>
-
-          <div className="flex px-4 justify-center w-full  ovrflow-hidden items-center ">
-            <div className="flex flex-col md:pt-5 items-end">
-              <div className="border-solid w-fit p-[32px] border-white border-[1px] ">
-                <img
-                  className="relative py-[4px] px-[6px] bg-[#282C33] bottom-12"
-                  src={Qoute}
-                  alt="QouteIcon"
-                />
-                <p className="text-[24px] text-white font-medium ">
-                  {quotes[currentQuoteIndex].quote}
-                </p>
-                <img
-                  className="relative top-11  py-[4px] px-[6px] bg-[#282C33] left-[620px]"
-                  src={Qoute}
-                  alt="QouteIcon"
-                />
-              </div>
-              <div className="border-solid w-fit text-[24px] text-white p-[16px] flex justify-end  border-white border-[1px]">
-                - {quotes[currentQuoteIndex].author}
-              </div>
-            </div>
-
-            <div className="w-[91px] h-[91px] border-solid border-white border-[1px] relative bottom-10 left-[340px]"></div>
-          </div>
         </div>
       </div>
     </>
